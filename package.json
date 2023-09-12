@@ -2,9 +2,10 @@
   "name": "crypt_cli",
   "version": "0.1.0",
   "description": "A tiny tool to cipher and decipher data quickly through the CLI",
-  "main": "index.js",
+  "private": false,
   "scripts": {
-    "test": "ts-mocha ./src/**/*.test.ts"
+    "test": "ts-mocha ./src/**/*.test.ts",
+    "build": "tsc --project tsconfig.prod.json"
   },
   "type": "module",
   "keywords": [],
