@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env tsx
 
 /**
  *
@@ -22,11 +22,14 @@ import { setTrackCommand } from './commands/command.set-track';
 import { randomBytes } from 'node:crypto';
 import { getTrackCommand } from './commands/command.get-track';
 import { delTrackCommand } from './commands/command.del-track';
+import { Database } from 'better-sqlite3';
 
 /**
  *
  */
 (async () => {
+  let db!: Database;
+
   try {
     const pathToDefaultDirectory = join(homedir(), 'crypt_cli_data');
 
@@ -38,7 +41,7 @@ import { delTrackCommand } from './commands/command.del-track';
     const prompt = inquirer.createPromptModule();
     const rawPassword = await prompt([ { type: 'password', name: 'password', message: 'Password: '} ]);
 
-    const db = Connection(join(pathToDefaultDirectory, 'main.db'));
+    db = Connection(join(pathToDefaultDirectory, 'main.db'));
     const trackModel = new TrackModel(db);
 
     if (parsedArguments.values.set) {
@@ -64,7 +67,10 @@ import { delTrackCommand } from './commands/command.del-track';
 
     db.close();
   } catch (err) {
-    console.error('Unknown error happened', err);
+    console.error('Unknown error happened\n', err);
+    if (db)
+      db?.close();
+    process.exit(1);
   }
 })();
 
