@@ -19,6 +19,7 @@ import { TrackModel } from './models/model.track';
 import { setTrackCommand } from './commands/command.set-track';
 import { randomBytes } from 'node:crypto';
 import { getTrackCommand } from './commands/command.get-track';
+import { delTrackCommand } from './commands/command.del-track';
 
 /**
  *
@@ -50,6 +51,10 @@ import { getTrackCommand } from './commands/command.get-track';
       getTrackCommand(trackModel, {
         label: parsedArguments.values['get'] as string,
         raw_pass: rawPassword.password as string
+      });
+    } else if (parsedArguments.values.delete) {
+      delTrackCommand(trackModel, {
+        label: parsedArguments.values['delete'] as string
       });
     } else {
       console.error('Command does not works');
