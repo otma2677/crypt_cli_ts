@@ -11,13 +11,13 @@ export default function () {
     options: {
       set: {
         type: 'string',
-        short: 'c'
+        short: 's'
       },
       get: {
         type: 'string',
         short: 'g'
       },
-      delete: {
+      del: {
         type: 'string',
         short: 'd'
       }
@@ -26,7 +26,7 @@ export default function () {
     tokens: true
   });
 
-  const isValid = result.values.get !== undefined || result.values.create !== undefined || result.values.set !== undefined;
+  const isValid = result.values.set !== undefined || result.values.get !== undefined || result.values.del !== undefined;
   if (isValid)
     return result;
 
