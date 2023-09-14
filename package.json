@@ -1,5 +1,5 @@
 {
-  "name": "crypt_cli",
+  "name": "crypto_cli_tool",
   "version": "0.1.0",
   "description": "A tiny tool to cipher and decipher data quickly through the CLI",
   "private": false,
