@@ -25,12 +25,26 @@ you've saved there.
 
 
 # Installation
+### Usage with npm 
+```bash
+npm i -g crypto_cli_tool
+```
+
+From there you can call from your cli the application
+
+```bash
+ccli --set <string>
+```
+
+### Usage as Standalone
+> [!Important]\
+> Soon available
 
 
 # API
 ### SET
 ```bash
-ccli --set <label>
+ccli --set <string>
 ```
 Command: "--set" or "-s"
 The label will be the name under which your content will be retrieved for a later usage. You will be prompter the password 
@@ -38,14 +52,14 @@ with which the key will be derived from and the content that needs to be saved a
 
 ### GET
 ```bash
-ccli --get <label>
+ccli --get <string>
 ```
 Command: "--get" or "-g"
 You will be prompted a password and the content will be returned.
 
 ### DELETE
 ```bash
-ccli --del <label>
+ccli --del <string>
 ```
 Command: "--del" or "-d"
 
