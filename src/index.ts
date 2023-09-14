@@ -57,7 +57,7 @@ import { Database } from 'better-sqlite3';
         label: parsedArguments.values['get'] as string,
         raw_pass: rawPassword.password as string
       });
-    } else if (parsedArguments.values.delete) {
+    } else if (parsedArguments.values.del) {
       delTrackCommand(trackModel, {
         label: parsedArguments.values['delete'] as string
       });
