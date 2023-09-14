@@ -3,8 +3,8 @@
  */
 import assert from 'node:assert';
 import { Database } from 'better-sqlite3';
-import { initializeDatabaseTables } from '../core/core.database';
-import { Track, TrackModel } from './model.track';
+import { initializeDatabaseTables } from '../core/core.database.js';
+import { Track, TrackModel } from './model.track.js';
 
 /**
  *
@@ -37,6 +37,8 @@ describe('Testing model track functions and classes', () => {
     for (const track of tracks)
       tm.set(track);
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     assert.equal(tm.get(tracks[0])?.label, tracks[0].label);
   });
 });

@@ -2,7 +2,7 @@
  *
  */
 import assert from 'node:assert';
-import { checkPath } from './core.utils';
+import { checkPath } from './core.utils.js';
 
 /**
  *

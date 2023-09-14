@@ -2,7 +2,7 @@
  *
  */
 import { Type, Static } from '@sinclair/typebox';
-import { TrackModel } from '../models/model.track';
+import { TrackModel } from '../models/model.track.js';
 
 /**
  *

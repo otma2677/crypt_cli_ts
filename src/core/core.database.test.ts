@@ -2,7 +2,7 @@
  *
  */
 import assert from 'node:assert';
-import { initializeDatabaseTables } from './core.database';
+import { initializeDatabaseTables } from './core.database.js';
 
 /**
  *

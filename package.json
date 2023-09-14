@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "description": "A tiny tool to cipher and decipher data quickly through the CLI",
   "private": false,
-  "main": "./src/index.ts",
+  "main": "./bin/index.js",
   "bin": {
-    "cc": "./src/index.ts"
+    "ccli": "./bin/index.js"
   },
   "scripts": {
     "test": "ts-mocha ./src/**/*.test.ts",
-    "build": "tsx --tsconfig tsconfig.prod.json"
+    "build": "tsc --project tsconfig.prod.json"
   },
 
   "keywords": [],

@@ -1,4 +1,4 @@
-#!/usr/bin/env tsx
+#!/usr/bin/env node
 
 /**
  *
@@ -14,14 +14,14 @@ import inquirer from 'inquirer';
 /**
  *
  */
-import { initializeDefaultFolders } from './core/core.utils';
-import { Connection, initializeDatabaseTables } from './core/core.database';
-import coreParseArguments from './core/core.parse-arguments';
-import { TrackModel } from './models/model.track';
-import { setTrackCommand } from './commands/command.set-track';
+import { initializeDefaultFolders } from './core/core.utils.js';
+import { Connection, initializeDatabaseTables } from './core/core.database.js';
+import coreParseArguments from './core/core.parse-arguments.js';
+import { TrackModel } from './models/model.track.js';
+import { setTrackCommand } from './commands/command.set-track.js';
 import { randomBytes } from 'node:crypto';
-import { getTrackCommand } from './commands/command.get-track';
-import { delTrackCommand } from './commands/command.del-track';
+import { getTrackCommand } from './commands/command.get-track.js';
+import { delTrackCommand } from './commands/command.del-track.js';
 import { Database } from 'better-sqlite3';
 
 /**
@@ -65,12 +65,16 @@ import { Database } from 'better-sqlite3';
       console.error('Command does not works');
     }
 
-    db.close();
   } catch (err) {
     console.error('Unknown error happened\n', err);
     if (db)
       db?.close();
     process.exit(1);
   }
+
+  if (db)
+    db.close();
+
+  process.exit(0);
 })();
 
