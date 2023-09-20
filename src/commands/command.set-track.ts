@@ -2,8 +2,8 @@
  *
  */
 import { Type, Static } from '@sinclair/typebox';
-import { cipherCBC, generatePassword } from '../core/core.crypt.js';
-import { TrackModel } from '../models/model.track.js';
+import { cipherCBC, generatePassword } from '../core/core.crypt';
+import { TrackModel } from '../models/model.track';
 
 /**
  *

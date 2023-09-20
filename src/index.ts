@@ -1,28 +1,28 @@
 #!/usr/bin/env node
 
 /**
- *
+ * Node modules imports
  */
 import { join } from 'node:path';
 import { homedir } from 'node:os';
+import { randomBytes } from 'node:crypto';
 
 /**
- *
+ * External imports
  */
+import { Database } from 'better-sqlite3';
 import inquirer from 'inquirer';
 
 /**
- *
+ * Internal imports
  */
-import { initializeDefaultFolders } from './core/core.utils.js';
-import { Connection, initializeDatabaseTables } from './core/core.database.js';
-import coreParseArguments from './core/core.parse-arguments.js';
-import { TrackModel } from './models/model.track.js';
-import { setTrackCommand } from './commands/command.set-track.js';
-import { randomBytes } from 'node:crypto';
-import { getTrackCommand } from './commands/command.get-track.js';
-import { delTrackCommand } from './commands/command.del-track.js';
-import { Database } from 'better-sqlite3';
+import coreParseArguments from './core/core.parse-arguments';
+import { TrackModel } from './models/model.track';
+import { initializeDefaultFolders } from './core/core.utils';
+import { Connection, initializeDatabaseTables } from './core/core.database';
+import { setTrackCommand } from './commands/command.set-track';
+import { getTrackCommand } from './commands/command.get-track';
+import { delTrackCommand } from './commands/command.del-track';
 
 /**
  *

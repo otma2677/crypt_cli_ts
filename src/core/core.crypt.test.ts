@@ -4,7 +4,7 @@
 import assert from 'node:assert';
 import { randomBytes } from 'node:crypto';
 
-import { cipherCBC, decipherCBC, generatePassword } from './core.crypt.js';
+import { cipherCBC, decipherCBC, generatePassword } from './core.crypt';
 
 /**
  *

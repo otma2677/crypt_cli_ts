@@ -2,7 +2,7 @@
  *
  */
 import assert from 'node:assert';
-import { initializeDatabaseTables } from './core.database.js';
+import { initializeDatabaseTables } from './core.database';
 
 /**
  *
@@ -13,7 +13,7 @@ describe('Testing database functions', () => {
 
     const result = db?.prepare('SELECT * FROM sqlite_master where type = ?').all('table');
 
-    assert.equal(result?.length, 1);
+    assert.equal(result?.length, 2);
 
     db?.close();
   });

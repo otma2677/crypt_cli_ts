@@ -3,8 +3,8 @@
  */
 import assert from 'node:assert';
 import { Database } from 'better-sqlite3';
-import { initializeDatabaseTables } from "../core/core.database.js";
-import { User, UserModel } from "./model.user.js";
+import { initializeDatabaseTables } from '../core/core.database';
+import { User, UserModel } from './model.user';
 
 /**
  *
@@ -40,18 +40,18 @@ describe('Testing model user functions and classes', () => {
     }
   });
 
+  it('get user', () => {
+    const res1 = um.get('hallo');
+    const res2 = um.get('hillo');
+
+    assert.equal(res1?.output_favorite, 2);
+    assert.equal(res2?.output_favorite, 3);
+  });
+
   it('update user', () => {
     const res = um.update({ name: 'hello', pepper: 'newpepper1', output_favorite: 9 });
 
     assert.equal(res, true);
-  });
-
-  it('get user', () => {
-    const res1 = um.get('hello');
-    const res2 = um.get('hillo');
-
-    assert.equal(res1?.output_favorite, 9);
-    assert.equal(res2?.output_favorite, 2);
   });
 
   it('delete user', () => {

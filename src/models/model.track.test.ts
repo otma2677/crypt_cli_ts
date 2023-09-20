@@ -3,8 +3,8 @@
  */
 import assert from 'node:assert';
 import { Database } from 'better-sqlite3';
-import { initializeDatabaseTables } from '../core/core.database.js';
-import { Track, TrackModel } from './model.track.js';
+import { initializeDatabaseTables } from '../core/core.database';
+import { Track, TrackModel } from './model.track';
 
 /**
  *
