@@ -20,13 +20,20 @@ export default function () {
       del: {
         type: 'string',
         short: 'd'
+      },
+      help: {
+        type: 'boolean',
       }
     },
     strict: false,
     tokens: true
   });
 
-  const isValid = result.values.set !== undefined || result.values.get !== undefined || result.values.del !== undefined;
+  const isValid =
+    result.values.set !== undefined ||
+    result.values.get !== undefined ||
+    result.values.del !== undefined ||
+    result.values.help !== undefined;
   if (isValid)
     return result;
 

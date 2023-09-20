@@ -23,6 +23,7 @@ import { Connection, initializeDatabaseTables } from './core/core.database';
 import { setTrackCommand } from './commands/command.set-track';
 import { getTrackCommand } from './commands/command.get-track';
 import { delTrackCommand } from './commands/command.del-track';
+import { helpCommand } from './commands/command.help';
 
 /**
  *
@@ -37,6 +38,10 @@ import { delTrackCommand } from './commands/command.del-track';
     initializeDatabaseTables(pathToDefaultDirectory);
 
     const parsedArguments = coreParseArguments();
+    if (parsedArguments.values.help) {
+      helpCommand();
+      process.exit(0);
+    }
 
     const prompt = inquirer.createPromptModule();
     const rawPassword = await prompt([ { type: 'password', name: 'password', message: 'Password: '} ]);
@@ -66,7 +71,9 @@ import { delTrackCommand } from './commands/command.del-track';
     }
 
   } catch (err) {
-    console.error('Unknown error happened\n');
+    if (err instanceof Error)
+      console.error(err.message);
+
     if (db)
       db?.close();
     process.exit(1);
