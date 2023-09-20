@@ -21,6 +21,11 @@ export function generatePassword(raw: string, salt: string, length?: number) {
   return result.toString('hex');
 }
 
+
+/**
+ *
+ * Cipher given content with aes-cbc-256
+ */
 export function cipherCBC(content: string, password: string) {
   const vector = randomBytes(16);
   const bPassword = Buffer.from(password, 'hex');
@@ -36,6 +41,11 @@ export function cipherCBC(content: string, password: string) {
   return { vector, final };
 }
 
+
+/**
+ *
+ * Decipher given content and key with aes-cbc-256
+ */
 export function decipherCBC(content: string, password: string, vector: string) {
   const bVector = Buffer.from(vector, 'hex');
   const bPassword = Buffer.from(password, 'hex');
@@ -43,10 +53,8 @@ export function decipherCBC(content: string, password: string, vector: string) {
 
   const decipher = createDecipheriv('aes-256-cbc', bPassword, bVector);
   const updated = decipher.update(bContent);
-  const final = Buffer.concat([
+  return Buffer.concat([
     updated,
     decipher.final()
   ]);
-
-  return final;
 }
