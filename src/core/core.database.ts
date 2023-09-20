@@ -35,7 +35,7 @@ export function initializeDatabaseTables(path: string, returning = false) {
         created_at text default current_timestamp not null,
         name text unique not null,
         pepper text not null,
-        output_favorite text not null
+        output_favorite int not null
     );
   `.trim());
 
