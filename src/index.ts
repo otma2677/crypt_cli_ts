@@ -66,7 +66,7 @@ import { delTrackCommand } from './commands/command.del-track';
     }
 
   } catch (err) {
-    console.error('Unknown error happened\n', err);
+    console.error('Unknown error happened\n');
     if (db)
       db?.close();
     process.exit(1);

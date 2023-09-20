@@ -9,9 +9,9 @@
   },
   "scripts": {
     "test": "ts-mocha ./src/**/*.test.*",
-    "build": "tsc --project tsconfig.prod.json"
+    "build": "tsc --project tsconfig.prod.json",
+    "bundle": "tsup ./src/index.ts"
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -26,6 +26,7 @@
     "eslint": "^8.49.0",
     "mocha": "^10.2.0",
     "ts-mocha": "^10.0.0",
+    "tsup": "^7.2.0",
     "tsx": "^3.12.8",
     "typescript": "^5.2.2"
   },
