@@ -8,7 +8,7 @@
     "ccli": "./bin/index.js"
   },
   "scripts": {
-    "test": "ts-mocha ./src/**/*.test.ts",
+    "test": "ts-mocha ./src/**/*.test.*",
     "build": "tsc --project tsconfig.prod.json"
   },
 
