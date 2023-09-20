@@ -27,18 +27,28 @@ describe('Testing model track functions and classes', () => {
     db.close();
   });
 
-  it('Test Model', () => {
+  it('set track', () => {
     const tracks: Array<Pick<Track, 'label' | 'content' | 'vector' | 'pass_salt'>> = [
       { label: 'hello', content: 'ddeeef', vector: 'fezfezf', pass_salt: 'zefezfezfezfezfezf' },
       { label: 'hella', content: 'ddeeeef', vector: 'fezfezf', pass_salt: 'zefezfezfezfezfezf' },
       { label: 'hellu', content: 'ezfzefzefddeee', vector: 'fezfezf', pass_salt: 'zefezfezfezfezfezf' },
     ];
 
-    for (const track of tracks)
-      tm.set(track);
+    for (const track of tracks) {
+      const res = tm.set(track);
+      assert.equal(res, true);
+    }
+  });
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    assert.equal(tm.get(tracks[0])?.label, tracks[0].label);
+  it('get track', () => {
+    const res = tm.get({ label: 'hello' });
+
+    assert.equal(res?.content, 'ddeeef');
+  });
+
+  it('delete track', () => {
+    const res = tm.delete({ label: 'hello' });
+
+    assert.equal(res, true);
   });
 });

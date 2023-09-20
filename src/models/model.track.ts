@@ -2,7 +2,7 @@
  *
  */
 import { Static, Type } from '@sinclair/typebox';
-import { Value} from '@sinclair/typebox/value';
+import { Value } from '@sinclair/typebox/value';
 import { Database } from 'better-sqlite3';
 
 /**
