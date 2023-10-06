@@ -21,8 +21,16 @@ export default function () {
         type: 'string',
         short: 'd'
       },
+      list: {
+        type: 'string',
+        short: 'l'
+      },
       help: {
         type: 'boolean',
+      },
+      toClipboard: {
+        type: 'boolean',
+        short: 't'
       }
     },
     strict: false,

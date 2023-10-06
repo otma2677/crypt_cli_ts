@@ -24,6 +24,7 @@ import { setTrackCommand } from './commands/command.set-track';
 import { getTrackCommand } from './commands/command.get-track';
 import { delTrackCommand } from './commands/command.del-track';
 import { helpCommand } from './commands/command.help';
+import { listTracksCommand } from './commands/command.list-tracks';
 
 /**
  *
@@ -39,8 +40,7 @@ import { helpCommand } from './commands/command.help';
 
     const parsedArguments = coreParseArguments();
     if (parsedArguments.values.help) {
-      helpCommand();
-      process.exit(0);
+      return helpCommand();
     }
 
     const prompt = inquirer.createPromptModule();
@@ -51,25 +51,32 @@ import { helpCommand } from './commands/command.help';
 
     if (parsedArguments.values.set) {
       const rawContent = await prompt([ { type: 'password', name: 'content', message: 'Content: '} ]);
-      setTrackCommand(trackModel, {
+      return setTrackCommand(trackModel, {
         label: parsedArguments.values['set'] as string,
         content: rawContent.content,
         raw_pass: rawPassword.password,
         pass_salt: randomBytes(32).toString('hex')
       });
-    } else if (parsedArguments.values.get) {
-      getTrackCommand(trackModel, {
+    }
+
+    if (parsedArguments.values.get) {
+      return getTrackCommand(trackModel, {
         label: parsedArguments.values['get'] as string,
         raw_pass: rawPassword.password as string
       });
-    } else if (parsedArguments.values.del) {
-      delTrackCommand(trackModel, {
-        label: parsedArguments.values['delete'] as string
-      });
-    } else {
-      console.error('Command does not works');
     }
 
+    if (parsedArguments.values.del) {
+      return delTrackCommand(trackModel, {
+        label: parsedArguments.values['delete'] as string
+      });
+    }
+
+    if (parsedArguments.values.list) {
+      return listTracksCommand(trackModel);
+    }
+
+    console.error('Command does not works');
   } catch (err) {
     if (err instanceof Error)
       console.error(err.message);

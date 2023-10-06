@@ -56,4 +56,10 @@ export class TrackModel {
 
     return isATrack ? result as Track : null;
   }
+
+  getAll(quantity: number) {
+    return this.db
+      .prepare('SELECT ROWID, * FROM tracks ORDER BY ROWID desc LIMIT ?')
+      .all(quantity) as Array<Track>;
+  }
 }
